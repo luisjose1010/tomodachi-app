@@ -1,7 +1,7 @@
 import { Link } from "react-router"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/Button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
 import { Users, Ticket, Calendar, BarChart3, Settings, PlusCircle, FileText, MessageSquare, Bell } from "lucide-react"
 
 export function AdminDashboard() {

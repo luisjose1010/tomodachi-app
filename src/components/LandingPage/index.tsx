@@ -1,77 +1,16 @@
 import { Link } from "react-router"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
-import { CalendarDays, MapPin, Users, LogIn } from "lucide-react"
+import { CalendarDays, MapPin, Users } from "lucide-react"
 import logo from '@/assets/logo.webp'
 import video from '@/assets/video1.mp4'
+import { Navbar } from "@/components/Navbar"
 
 export function LandingPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-40 w-full border-b bg-white/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex px-4 h-16 items-center justify-between">
-          <a href="/#" className="flex items-center gap-2">
-            <img
-              src={logo}
-              alt="Tomodachi Events Logo"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-            <span className="text-xl font-bold">Tomodachi Events</span>
-          </a>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#about" className="text-sm font-medium hover:text-primary">
-              Sobre el Evento
-            </a>
-            <a href="#schedule" className="text-sm font-medium hover:text-primary">
-              Programación
-            </a>
-            <a href="#sponsors" className="text-sm font-medium hover:text-primary">
-              Patrocinadores
-            </a>
-            <a href="#tickets" className="text-sm font-medium hover:text-primary">
-              Entradas
-            </a>
-            <a href="#stands" className="text-sm font-medium hover:text-primary">
-              Stands
-            </a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link to="/login">
-              <Button variant="outlineDark" size="sm" className="hidden md:flex gap-2">
-                <LogIn className="h-4 w-4" />
-                Iniciar Sesión
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button size="sm" className="hidden md:flex">
-                Registrarse
-              </Button>
-            </Link>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <span className="sr-only">Toggle menu</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <line x1="4" x2="20" y1="12" y2="12" />
-                <line x1="4" x2="20" y1="6" y2="6" />
-                <line x1="4" x2="20" y1="18" y2="18" />
-              </svg>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className={`relative w-full py-12 md:py-24 lg:py-32 bg-[url('/src/assets/banner.webp')] bg-position-[0_25%] bg-cover`}>

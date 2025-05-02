@@ -26,9 +26,11 @@ export function LandingPage() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg">
-              Comprar Entradas
-            </Button>
+            <Link to={"/purchase"}>
+              <Button size="lg">
+                Comprar Entradas
+              </Button>
+            </Link>
             <Button variant="outline" size="lg">
               Ver Programación
             </Button>
@@ -328,7 +330,9 @@ export function LandingPage() {
                 </li>
               </ul>
               <div className="p-6">
+                <Link to={"/purchase"}>
                 <Button className="w-full mt-6">Comprar Ahora</Button>
+                </Link>
               </div>
             </div>
 
@@ -413,7 +417,9 @@ export function LandingPage() {
                 </li>
               </ul>
               <div className="p-6">
-                <Button variant="secondary" className="w-full mt-6">Comprar Ahora</Button>
+                <Link to={"/purchase"}>
+                  <Button variant="secondary" className="w-full mt-6">Comprar Ahora</Button>
+                </Link>
               </div>
             </div>
 
@@ -495,7 +501,9 @@ export function LandingPage() {
                 </li>
               </ul>
               <div className="p-6">
+                <Link to={"/purchase"}>
                 <Button className="w-full mt-6 bg-accent-dark/85 hover:bg-accent-dark">Comprar Ahora</Button>
+                </Link>
               </div>
             </div>
           </div>

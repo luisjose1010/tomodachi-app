@@ -3,10 +3,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router";
+import { AdminDashboard } from "@/components/Admin";
 import { LandingPage } from "@/components/LandingPage";
 import { LoginPage } from "@/components/LoginPage";
 import { RegisterPage } from "@/components/RegisterPage";
-import { AdminDashboard } from "@/components/Admin";
+import { PurchasePage } from "@/components/PurchasePage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "admin",
     element: <AdminDashboard />,
+  },
+  {
+    path: "/purchase",
+    element: <PurchasePage />,
   }
 ]);
 

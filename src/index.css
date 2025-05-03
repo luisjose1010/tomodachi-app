@@ -12,6 +12,12 @@
   --color-accent: white;
   --color-accent-dark: #03258c;
   --color-accent-darkest: #021e73;
+  --color-background: hsl(0 0% 100%);
+  --color-muted: hsl(0 0% 96.1%);
+  --color-foreground: hsl(0 0% 3.9%);
+  --color-muted-foreground: hsl(0 0% 45.1%);
+  --color-border: hsl(0 0% 89.8%);
+  --color-ring: hsl(0 0% 83.1%);
 }
 
 :root {

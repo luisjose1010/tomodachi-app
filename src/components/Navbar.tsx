@@ -38,7 +38,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-40 w-full border-b bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex px-4 h-16 items-center justify-between">
         <a href="/" className="flex items-center gap-2">
           <img
@@ -72,7 +72,7 @@ export function Navbar() {
             user ? (
               <div className="flex items-center gap-2">
                 <Link to={isAdmin ? '/admin' : '/profile'}>
-                  <span className="text-lg font-medium relative h-10 w-10 rounded-full bg-muted flex items-center justify-center bg-primary">
+                  <span className="text-lg font-medium relative h-10 w-10 rounded-full bg-primary flex items-center justify-center">
                     {user.name[0]}
                   </span>
                 </Link>

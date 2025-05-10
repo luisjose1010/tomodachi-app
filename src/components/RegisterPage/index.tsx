@@ -1,12 +1,12 @@
-import { Link, useNavigate } from "react-router"
-import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
-import { Label } from "@/components/ui/Label"
-import { Checkbox } from "@/components/ui/Checkbox"
-import { api } from "@/api"
-import { setToken } from "@/api/localApi"
-import { Errors, useForm } from "@/hooks/useForm"
-import { validateEmail } from "@/lib/utils"
+import { Link, useNavigate } from 'react-router';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { api } from '@/api';
+import { setToken } from '@/api/localApi';
+import { Errors, useForm } from '@/hooks/useForm';
+import { validateEmail } from '@/lib/utils';
 
 const registerData = {
   id_card: '',
@@ -16,8 +16,8 @@ const registerData = {
   password_confirm: '',
   phone_number: '',
   instagram: '',
-  terms: false
-}
+  terms: false,
+};
 
 function validate(values: typeof registerData) {
   const errors: Errors<typeof registerData> = {
@@ -27,47 +27,46 @@ function validate(values: typeof registerData) {
     password: [],
     phone_number: [],
     instagram: [],
-    terms: []
-  }
+    terms: [],
+  };
 
-  if (values.id_card === '') errors.id_card?.push('Número de cédula requerido')
-  if (values.name === '') errors.name?.push('Nombre requerido')
-  if (values.email === '') errors.email?.push('Correo electrónico requerido')
-  if (!validateEmail(values.email)) errors.email?.push('Correo electrónico no válido')
-  if (values.password === '') errors.password?.push('Contraseña requerida')
-  if (values.password.length < 8) errors.password?.push('Contraseña debe tener al menos 8 caracteres')
-  if (values.password !== values.password_confirm) errors.password?.push('Las contraseñas no coinciden')
-  if (values.terms === false) errors.terms?.push('Debe aceptar los términos y condiciones')
+  if (values.id_card === '') errors.id_card?.push('Número de cédula requerido');
+  if (values.name === '') errors.name?.push('Nombre requerido');
+  if (values.email === '') errors.email?.push('Correo electrónico requerido');
+  if (!validateEmail(values.email)) errors.email?.push('Correo electrónico no válido');
+  if (values.password === '') errors.password?.push('Contraseña requerida');
+  if (values.password.length < 8) errors.password?.push('Contraseña debe tener al menos 8 caracteres');
+  if (values.password !== values.password_confirm) errors.password?.push('Las contraseñas no coinciden');
+  if (values.terms === false) errors.terms?.push('Debe aceptar los términos y condiciones');
 
-  return errors
+  return errors;
 }
 
 export function RegisterPage() {
   const navigate = useNavigate();
   const { values, valid, error, rawError, handleChange, handleBlur } = useForm(
-    { initialData: registerData, validate }
-  )
+    { initialData: registerData, validate },
+  );
 
   const fetchToken = (data: typeof registerData) =>
     api.post('auth/register',
-      data
-    ).then(response => {
-      setToken(response.data.token)
-      navigate('/')
-    }).catch(error => {
+      data,
+    ).then((response) => {
+      setToken(response.data.token);
+      navigate('/');
+    }).catch((error) => {
       if (error.response?.data?.message) {
-        console.error('Login failed:', error.response.data.message)
+        console.error('Login failed:', error.response.data.message);
+      } else {
+        console.error('Login failed:', error);
       }
-      else {
-        console.error('Login failed:', error)
-      }
-    })
+    });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    fetchToken(values)
-  }
+    fetchToken(values);
+  };
 
   const handleTermsCheckboxChange = (checked: boolean) => {
     const syntheticEvent = {
@@ -225,7 +224,7 @@ export function RegisterPage() {
               />
               <Label htmlFor="terms" className="text-sm">
                 Acepto los
-                {" "}
+                {' '}
                 <Link to="/terms" className="text-rose-600 hover:text-rose-500">
                   términos y condiciones
                 </Link>
@@ -240,7 +239,7 @@ export function RegisterPage() {
           </form>
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
-            ¿Ya tienes una cuenta?{" "}
+            ¿Ya tienes una cuenta?{' '}
             <Link to="/login" className="font-semibold leading-6 text-rose-600 hover:text-rose-500">
               Iniciar sesión
             </Link>
@@ -248,5 +247,5 @@ export function RegisterPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

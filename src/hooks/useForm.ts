@@ -3,7 +3,7 @@ import {
   useEffect,
   useRef,
   useState,
-  type FormEvent
+  type FormEvent,
 } from 'react';
 
 type TouchedMap<T> = Partial<Record<keyof T, boolean>>;
@@ -33,7 +33,7 @@ interface useFormReturn<T extends object> {
 
 // --- Main Hook ---
 export function useForm<T extends object>(
-  { initialData, validate, debounceTime = 300 }: useFormProps<T>
+  { initialData, validate, debounceTime = 300 }: useFormProps<T>,
 ): useFormReturn<T> {
   const [values, setValues] = useState<T>(initialData);
   const [errors, setErrors] = useState<Errors<T>>({}); // Visible errors (filtered by touched)
@@ -45,7 +45,7 @@ export function useForm<T extends object>(
   // --- Function to filter errors based on 'touched' ---
   const filterErrorsByTouched = useCallback((errorsToFilter: Errors<T>): Errors<T> => {
     const newErrors = { ...errorsToFilter };
-    Object.keys(newErrors).forEach(key => {
+    Object.keys(newErrors).forEach((key) => {
       // If the field has NOT been touched, clean up the error array
       if (!touched.current[key as keyof T]) {
         newErrors[key as keyof Errors<T>] = [];
@@ -65,10 +65,9 @@ export function useForm<T extends object>(
 
       // Calculate validity based on *actual* errors (before filtering by touched)
       const formIsValid = Object.values(validationErrors as string[]).every(
-        errorArray => errorArray.length === 0
+        (errorArray) => errorArray.length === 0,
       );
       setValid(formIsValid); // Update validity status
-
     } else {
       // If there is no validation function, the form is considered valid and error-free.
       setRawErrors({});
@@ -103,7 +102,7 @@ export function useForm<T extends object>(
 
     // Update value (using functional update to ensure the most recent state)
     const newValue = type === 'checkbox' ? checked : value;
-    setValues(prevValues => ({
+    setValues((prevValues) => ({
       ...prevValues,
       [name]: newValue,
     }));
@@ -119,7 +118,6 @@ export function useForm<T extends object>(
     debounceTimeout.current = setTimeout(() => {
       debouncedValidate(updatedValues);
     }, debounceTime);
-
   }, [debounceTime, debouncedValidate, values]); // Include 'values' in dependencies is important for `updatedValues`
 
   // --- Blur Handler ---
@@ -142,7 +140,6 @@ export function useForm<T extends object>(
     if (name && validate) {
       debouncedValidate(values);
     }
-
   }, [values, debouncedValidate, validate]);
 
   // --- Clear the Debounce ---

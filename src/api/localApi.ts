@@ -1,33 +1,33 @@
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
 
 interface TokenData {
-  exp: number // Expiration time in seconds
-  iat: number // Issued At time in seconds
-  userId: string // User ID
-  roleId: number // Role ID
+  exp: number; // Expiration time in seconds
+  iat: number; // Issued At time in seconds
+  userId: string; // User ID
+  roleId: number; // Role ID
 }
 
 export function setToken(token: string, remember: boolean = true) {
   if (remember) {
-    localStorage.setItem('token', token)
-    return
+    localStorage.setItem('token', token);
+    return;
   }
-  sessionStorage.setItem('token', token)
+  sessionStorage.setItem('token', token);
 }
 
-export const getToken = () => localStorage.getItem('token') ?? sessionStorage.getItem('token')
+export const getToken = () => localStorage.getItem('token') ?? sessionStorage.getItem('token');
 
 export function getTokenData() {
-  const token = getToken()
-  let tokenDecoded = null
+  const token = getToken();
+  let tokenDecoded = null;
 
   if (token) {
-    tokenDecoded = jwtDecode<TokenData>(token)
+    tokenDecoded = jwtDecode<TokenData>(token);
   }
-  return tokenDecoded
+  return tokenDecoded;
 }
 
 export function clearToken() {
-  localStorage.removeItem('token')
-  sessionStorage.removeItem('token')
+  localStorage.removeItem('token');
+  sessionStorage.removeItem('token');
 }

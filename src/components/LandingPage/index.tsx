@@ -1,10 +1,10 @@
-import { Link } from "react-router"
-import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
-import { CalendarDays, MapPin, Users } from "lucide-react"
-import logo from '@/assets/logo.webp'
-import video from '@/assets/video1.mp4'
-import { Navbar } from "@/components/Navbar"
+import { Link } from 'react-router';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { CalendarDays, MapPin, Users } from 'lucide-react';
+import logo from '@/assets/logo.webp';
+import video from '@/assets/video1.mp4';
+import { Navbar } from '@/components/Navbar';
 
 export function LandingPage() {
   return (
@@ -13,7 +13,7 @@ export function LandingPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className={`relative w-full py-12 md:py-24 lg:py-32 bg-[url('/src/assets/banner.webp')] bg-position-[0_25%] bg-cover`}>
+      <section className={'relative w-full py-12 md:py-24 lg:py-32 bg-[url(\'/src/assets/banner.webp\')] bg-position-[0_25%] bg-cover'}>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center text-white">
           <div className="space-y-2">
@@ -26,7 +26,7 @@ export function LandingPage() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to={"/purchase"}>
+            <Link to="/purchase">
               <Button size="lg">
                 Comprar Entradas
               </Button>
@@ -330,8 +330,8 @@ export function LandingPage() {
                 </li>
               </ul>
               <div className="p-6">
-                <Link to={"/purchase"}>
-                <Button className="w-full mt-6">Comprar Ahora</Button>
+                <Link to="/purchase">
+                  <Button className="w-full mt-6">Comprar Ahora</Button>
                 </Link>
               </div>
             </div>
@@ -417,7 +417,7 @@ export function LandingPage() {
                 </li>
               </ul>
               <div className="p-6">
-                <Link to={"/purchase"}>
+                <Link to="/purchase">
                   <Button variant="secondary" className="w-full mt-6">Comprar Ahora</Button>
                 </Link>
               </div>
@@ -501,8 +501,8 @@ export function LandingPage() {
                 </li>
               </ul>
               <div className="p-6">
-                <Link to={"/purchase"}>
-                <Button className="w-full mt-6 bg-accent-dark/85 hover:bg-accent-dark">Comprar Ahora</Button>
+                <Link to="/purchase">
+                  <Button className="w-full mt-6 bg-accent-dark/85 hover:bg-accent-dark">Comprar Ahora</Button>
                 </Link>
               </div>
             </div>
@@ -563,7 +563,7 @@ export function LandingPage() {
               </Button>
             </form>
             <p className="text-xs text-muted-foreground">
-              Nunca compartiremos tu correo electrónico.{" "}
+              Nunca compartiremos tu correo electrónico.{' '}
               <Link to="/privacy" className="underline underline-offset-2">
                 Política de Privacidad
               </Link>
@@ -720,5 +720,5 @@ export function LandingPage() {
         </div>
       </footer>
     </div>
-  )
+  );
 }

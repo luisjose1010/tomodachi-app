@@ -1,41 +1,41 @@
-import { api } from "@/api";
-import { clearToken, getTokenData } from "@/api/localApi";
+import { api } from '@/api';
+import { clearToken, getTokenData } from '@/api/localApi';
 import logo from '@/assets/logo.webp';
-import { Button } from "@/components/ui/Button";
-import { User } from "@/lib/types";
-import { LogIn, LogOut } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Button } from '@/components/ui/Button';
+import { User } from '@/lib/types';
+import { LogIn, LogOut } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 export function Navbar() {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null);
 
   const fetchUser = () => {
-    const tokenData = getTokenData()
+    const tokenData = getTokenData();
 
     if (!tokenData?.userId) {
       return;
     }
 
     api.get(`/users/${tokenData.userId}?include=role`)
-      .then(response => {
-        setUser(response.data.user)
+      .then((response) => {
+        setUser(response.data.user);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching user:', error);
-      })
-  }
+      });
+  };
 
   const isAdmin = user?.role?.permissions?.includes('admin');
 
   const logout = () => {
-    clearToken()
-    setUser(null)
-  }
+    clearToken();
+    setUser(null);
+  };
 
   useEffect(() => {
-    fetchUser()
-  }, [])
+    fetchUser();
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/60">

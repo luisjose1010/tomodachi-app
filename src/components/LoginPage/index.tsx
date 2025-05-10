@@ -1,59 +1,58 @@
-import { Link, useNavigate } from "react-router"
-import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
-import { Label } from "@/components/ui/Label"
-import { Checkbox } from "@/components/ui/Checkbox"
-import { api } from "@/api"
-import { setToken } from "@/api/localApi"
-import { useForm, Errors } from "@/hooks/useForm"
-import { validateEmail } from "@/lib/utils"
+import { Link, useNavigate } from 'react-router';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { api } from '@/api';
+import { setToken } from '@/api/localApi';
+import { useForm, Errors } from '@/hooks/useForm';
+import { validateEmail } from '@/lib/utils';
 
 const loginData = {
   email: '',
   password: '',
   remember: true,
-}
+};
 
 function validate(values: typeof loginData) {
   const errors: Errors<typeof loginData> = {
     email: [],
     password: [],
-  }
+  };
 
-  if (values.email === '') errors.email?.push('Correo electrónico requerido')
-  if (!validateEmail(values.email)) errors.email?.push('Correo electrónico no válido')
-  if (values.password === '') errors.password?.push('Contraseña requerida')
+  if (values.email === '') errors.email?.push('Correo electrónico requerido');
+  if (!validateEmail(values.email)) errors.email?.push('Correo electrónico no válido');
+  if (values.password === '') errors.password?.push('Contraseña requerida');
 
-  return errors
+  return errors;
 }
 
 export function LoginPage() {
   const navigate = useNavigate();
   const { values, valid, error, rawError, handleChange, handleBlur } = useForm(
-    { initialData: loginData, validate }
-  )
+    { initialData: loginData, validate },
+  );
 
   const fetchToken = (email: string, password: string) => {
     api.post('auth/login', {
       email,
-      password
-    }).then(response => {
-      setToken(response.data.token, values.remember)
-      navigate('/')
-    }).catch(error => {
+      password,
+    }).then((response) => {
+      setToken(response.data.token, values.remember);
+      navigate('/');
+    }).catch((error) => {
       if (error.response?.data?.message) {
-        console.error('Login failed:', error.response.data.message)
+        console.error('Login failed:', error.response.data.message);
+      } else {
+        console.error('Login failed:', error);
       }
-      else {
-        console.error('Login failed:', error)
-      }
-    })
-  }
+    });
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    fetchToken(values.email, values.password)
-  }
+    event.preventDefault();
+    fetchToken(values.email, values.password);
+  };
 
   const handleRememberCheckboxChange = (checked: boolean) => {
     const syntheticEvent = {
@@ -99,8 +98,15 @@ export function LoginPage() {
               </div>
               <div className="mt-2">
                 <Input
-                id="password"
-                name="password" type="password" value={values.password} onChange={handleChange} onBlur={handleBlur} autoComplete="current-password" required />
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  autoComplete="current-password"
+                  required
+                />
               </div>
             </div>
 
@@ -130,7 +136,7 @@ export function LoginPage() {
           </form>
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
-            ¿No tienes una cuenta?{" "}
+            ¿No tienes una cuenta?{' '}
             <Link to="/register" className="font-semibold leading-6 text-rose-600 hover:text-rose-500">
               Regístrate
             </Link>
@@ -138,5 +144,5 @@ export function LoginPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

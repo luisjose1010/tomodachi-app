@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/Button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
-import { Input } from "@/components/ui/Input"
-import { Label } from "@/components/ui/Label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select"
-import { Separator } from "@/components/ui/Separator"
-import { ArrowLeft, Calendar, CheckCircle2, CreditCard, Ticket, Users } from "lucide-react"
-import { Link } from "react-router"
-import { Navbar } from "../Navbar"
+import { Button } from '@/components/ui/Button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/RadioGroup';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
+import { Separator } from '@/components/ui/Separator';
+import { ArrowLeft, Calendar, CheckCircle2, CreditCard, Ticket, Users } from 'lucide-react';
+import { Link } from 'react-router';
+import { Navbar } from '../Navbar';
 
 function TicketsForm() {
   return (
@@ -107,7 +107,7 @@ function TicketsForm() {
         </section>
       </div>
     </Card>
-  )
+  );
 }
 
 function UserForm() {
@@ -157,7 +157,7 @@ function UserForm() {
         </div>
       </div>
     </Card>
-  )
+  );
 }
 
 function PaymentForm() {
@@ -245,7 +245,7 @@ function PaymentForm() {
         </div>
       </div>
     </Card>
-  )
+  );
 }
 
 function ProgressSteps() {
@@ -281,7 +281,7 @@ function ProgressSteps() {
         </ol>
       </div>
     </div>
-  )
+  );
 }
 
 function OrderSummary() {
@@ -325,11 +325,11 @@ function OrderSummary() {
         <CardFooter className="flex flex-col space-y-4">
           <Button className="w-full">Completar Compra</Button>
           <p className="text-xs text-center text-muted-foreground">
-            Al completar tu compra, aceptas nuestros{" "}
+            Al completar tu compra, aceptas nuestros{' '}
             <Link to="/terms" className="underline underline-offset-2 hover:text-foreground">
               Términos y Condiciones
-            </Link>{" "}
-            y{" "}
+            </Link>{' '}
+            y{' '}
             <Link to="/privacy" className="underline underline-offset-2 hover:text-foreground">
               Política de Privacidad
             </Link>
@@ -338,7 +338,7 @@ function OrderSummary() {
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }
 
 export function TicketsPurchase() {

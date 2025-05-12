@@ -13,7 +13,7 @@ export function LandingPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className={'relative w-full py-12 md:py-24 lg:py-32 bg-[url(\'/src/assets/banner.webp\')] bg-position-[0_25%] bg-cover'}>
+      <section className="relative w-full py-12 md:py-24 lg:py-32 bg-[url('/src/assets/banner.webp')] bg-position-[0_25%] bg-cover">
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center text-white">
           <div className="space-y-2">
